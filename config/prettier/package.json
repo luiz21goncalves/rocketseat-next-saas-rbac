@@ -1,0 +1,13 @@
+{
+  "name": "@saas/prettier",
+  "version": "0.0.0",
+  "main": "index.mjs",
+  "private": true,
+  "scripts": {
+    "lint": "prettier --config ./index.mjs --write ./index.mjs"
+  },
+  "devDependencies": {
+    "prettier": "3.4.2",
+    "prettier-plugin-tailwindcss": "0.6.9"
+  }
+}
