@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "main": "index.mjs",
   "private": true,
+  "license": "MIT",
   "scripts": {
     "lint": "prettier --config ./index.mjs --write ./index.mjs"
   },
