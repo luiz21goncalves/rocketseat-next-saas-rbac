@@ -62,9 +62,6 @@ importers:
 
   config/prettier:
     devDependencies:
-      '@saas/eslint-config':
-        specifier: workspace:*
-        version: link:../eslint-config
       prettier:
         specifier: 3.4.2
         version: 3.4.2
@@ -72,7 +69,29 @@ importers:
         specifier: 0.6.9
         version: 0.6.9(prettier@3.4.2)
 
-  config/typescript-config: {}
+  config/typescript-config:
+    devDependencies:
+      '@tsconfig/node22':
+        specifier: 22.0.0
+        version: 22.0.0
+
+  packages/auth:
+    devDependencies:
+      '@saas/eslint-config':
+        specifier: workspace:*
+        version: link:../../config/eslint-config
+      '@saas/prettier':
+        specifier: workspace:*
+        version: link:../../config/prettier
+      '@saas/typescript-config':
+        specifier: workspace:*
+        version: link:../../config/typescript-config
+      '@tsconfig/vite-react':
+        specifier: 3.4.0
+        version: 3.4.0
+      eslint:
+        specifier: 9.15.0
+        version: 9.15.0
 
 packages:
 
@@ -148,6 +167,12 @@ packages:
   '@nodelib/fs.walk@1.2.8':
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
+
+  '@tsconfig/node22@22.0.0':
+    resolution: {integrity: sha512-twLQ77zevtxobBOD4ToAtVmuYrpeYUh3qh+TEp+08IWhpsrIflVHqQ1F1CiPxQGL7doCdBIOOCF+1Tm833faNg==}
+
+  '@tsconfig/vite-react@3.4.0':
+    resolution: {integrity: sha512-NxS7WJayciLI+UnCgEqdBfQrZebvVNTSEj5EnaitwThL7iAso5G8wx18B/6yypCFGnyu8p6IMpKWu6JklOX3KA==}
 
   '@types/estree@1.0.6':
     resolution: {integrity: sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==}
@@ -1207,6 +1232,10 @@ snapshots:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.18.0
+
+  '@tsconfig/node22@22.0.0': {}
+
+  '@tsconfig/vite-react@3.4.0': {}
 
   '@types/estree@1.0.6': {}
 

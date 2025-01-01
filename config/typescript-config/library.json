@@ -1,0 +1,6 @@
+{
+  "extends": [
+    "@tsconfig/vite-react/tsconfig.json",
+    "@tsconfig/node22/tsconfig.json"
+  ]
+}
