@@ -1,9 +1,9 @@
-import js from "@eslint/js";
-import eslintConfigPrettier from "eslint-config-prettier";
-import globals from "globals";
-import tseslint from "typescript-eslint";
+import js from '@eslint/js'
+import eslintConfigPrettier from 'eslint-config-prettier'
+import globals from 'globals'
+import tseslint from 'typescript-eslint'
 
-import { config as baseConfig } from "./base.mjs";
+import { config as baseConfig } from './base.mjs'
 
 /**
  * A custom ESLint configuration for libraries that use React.
@@ -21,4 +21,4 @@ export const config = [
       },
     },
   },
-];
+]
