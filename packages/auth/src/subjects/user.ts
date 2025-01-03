@@ -9,4 +9,5 @@ export const userSubject = z.tuple([
   ]),
   z.literal('User'),
 ])
+
 export type UserSubject = z.infer<typeof userSubject>
