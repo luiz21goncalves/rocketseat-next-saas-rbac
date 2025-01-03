@@ -1,0 +1,22 @@
+{
+  "name": "@saas/api",
+  "version": "0.0.0",
+  "main": "src/server.ts",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "@saas/auth": "workspace:*"
+  },
+  "devDependencies": {
+    "@saas/eslint-config": "workspace:*",
+    "@saas/prettier": "workspace:*",
+    "@saas/typescript-config": "workspace:*",
+    "@types/node": "22.10.5",
+    "tsx": "4.19.2"
+  }
+}
