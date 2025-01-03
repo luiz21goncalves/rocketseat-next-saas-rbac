@@ -21,7 +21,8 @@ app.register(fastifyCors, { origin: '*' })
 app.register(fastifySwagger, {
   openapi: {
     info: {
-      title: 'SaaS RBAC',
+      title: 'Next.js SaaS',
+      description: 'Full-stack SaaS app with multi-tenant & RBAC',
       version: '0.0.0',
     },
   },

@@ -1,7 +1,7 @@
 import { FastifyInstance } from 'fastify'
 
-import { createAccount } from './auth/create-account'
+import { createUser } from './auth/create-user'
 
 export async function routes(app: FastifyInstance) {
-  app.register(createAccount)
+  app.register(createUser)
 }
