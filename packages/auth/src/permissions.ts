@@ -16,5 +16,6 @@ export const premissions: Record<Role, PermissionsByRole> = {
   },
   MEMBER(_user, { can }) {
     can('invite', 'User')
+    can('manage', 'Project')
   }
 }
