@@ -4,6 +4,7 @@
   "private": true,
   "license": "MIT",
   "devDependencies": {
-    "@tsconfig/node22": "22.0.0"
+    "@tsconfig/node22": "22.0.0",
+    "@tsconfig/vite-react": "3.4.0"
   }
 }

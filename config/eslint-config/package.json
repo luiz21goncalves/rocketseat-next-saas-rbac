@@ -7,7 +7,7 @@
   "exports": {
     "./base": "./base.mjs",
     "./next": "./next.mjs",
-    "./react": "./react.mjs",
+    "./library": "./library.mjs",
     "./node": "./node.mjs"
   },"scripts": {
     "lint": "eslint .",

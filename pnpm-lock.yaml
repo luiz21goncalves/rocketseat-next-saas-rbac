@@ -74,6 +74,9 @@ importers:
       '@tsconfig/node22':
         specifier: 22.0.0
         version: 22.0.0
+      '@tsconfig/vite-react':
+        specifier: 3.4.0
+        version: 3.4.0
 
   packages/auth:
     devDependencies:
@@ -86,12 +89,6 @@ importers:
       '@saas/typescript-config':
         specifier: workspace:*
         version: link:../../config/typescript-config
-      '@tsconfig/vite-react':
-        specifier: 3.4.0
-        version: 3.4.0
-      eslint:
-        specifier: 9.15.0
-        version: 9.15.0
 
 packages:
 
