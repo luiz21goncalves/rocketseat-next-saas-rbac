@@ -12,5 +12,8 @@
     "@saas/eslint-config": "workspace:*",
     "@saas/prettier": "workspace:*",
     "@saas/typescript-config": "workspace:*"
+  },
+  "dependencies": {
+    "@casl/ability": "6.7.2"
   }
 }
