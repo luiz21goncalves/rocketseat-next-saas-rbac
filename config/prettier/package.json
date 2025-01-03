@@ -5,7 +5,8 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "lint": "prettier --config ./index.mjs --write ./index.mjs"
+    "lint": "prettier --config index.mjs index.mjs",
+    "lint:fix": "prettier --config index.mjs --write index.mjs"
   },
   "devDependencies": {
     "prettier": "3.4.2",
