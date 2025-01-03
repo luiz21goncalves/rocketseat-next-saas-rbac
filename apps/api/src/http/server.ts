@@ -25,7 +25,7 @@ app.register(fastifySwagger, {
       version: '0.0.0',
     },
   },
-  transform: jsonSchemaTransform
+  transform: jsonSchemaTransform,
 })
 app.register(fastifySwaggerUi, { routePrefix: '/docs' })
 
