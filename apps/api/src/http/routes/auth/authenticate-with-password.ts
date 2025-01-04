@@ -38,7 +38,7 @@ export async function authenticationWithPassword(app: FastifyInstance) {
           .send({ message: 'Invalid credentials.' })
       }
 
-      if (userFromEmail.passwordHash === null) {
+      if (!userFromEmail.passwordHash) {
         return replay
           .status(StatusCodes.BAD_REQUEST)
           .send({ message: 'Invalid credentials.' })
