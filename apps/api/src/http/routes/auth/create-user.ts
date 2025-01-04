@@ -1,6 +1,7 @@
 import { hash } from 'bcryptjs'
 import { FastifyInstance } from 'fastify'
 import { ZodTypeProvider } from 'fastify-type-provider-zod'
+import { StatusCodes } from 'http-status-codes'
 import { z } from 'zod'
 
 import { prisma } from '@/lib/prisma'
@@ -18,8 +19,8 @@ export async function createUser(app: FastifyInstance) {
           password: z.string().min(8),
         }),
         response: {
-          201: z.null().describe('User created'),
-          409: z
+          [StatusCodes.CREATED]: z.null().describe('User created'),
+          [StatusCodes.CONFLICT]: z
             .object({ message: z.string() })
             .describe('User already exists'),
         },
@@ -34,7 +35,7 @@ export async function createUser(app: FastifyInstance) {
 
       if (userWithSameEmail) {
         return replay
-          .status(409)
+          .status(StatusCodes.CONFLICT)
           .send({ message: 'User with same e-mail already exists.' })
       }
 
@@ -48,7 +49,7 @@ export async function createUser(app: FastifyInstance) {
         },
       })
 
-      return replay.status(201).send()
+      return replay.status(StatusCodes.CREATED).send()
     }
   )
 }
