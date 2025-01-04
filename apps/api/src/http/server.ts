@@ -1,4 +1,5 @@
 import { fastifyCors } from '@fastify/cors'
+import { fastifyJwt } from '@fastify/jwt'
 import { fastifySwagger } from '@fastify/swagger'
 import { fastifySwaggerUi } from '@fastify/swagger-ui'
 import { fastify } from 'fastify'
@@ -17,6 +18,7 @@ app.setValidatorCompiler(validatorCompiler)
 app.setSerializerCompiler(serializerCompiler)
 
 app.register(fastifyCors, { origin: '*' })
+app.register(fastifyJwt, { secret: 'jwt-secret' })
 
 app.register(fastifySwagger, {
   openapi: {
