@@ -21,7 +21,7 @@ async function seed() {
       email: 'john.doe@acme.com',
       avatarUrl: faker.image.avatarGitHub(),
       passwordHash,
-    }
+    },
   })
   const user2 = await prisma.user.create({
     data: {
@@ -29,7 +29,7 @@ async function seed() {
       email: faker.internet.email().toLowerCase(),
       avatarUrl: faker.image.avatarGitHub(),
       passwordHash,
-    }
+    },
   })
   const user3 = await prisma.user.create({
     data: {
@@ -37,7 +37,7 @@ async function seed() {
       email: faker.internet.email().toLowerCase(),
       avatarUrl: faker.image.avatarGitHub(),
       passwordHash,
-    }
+    },
   })
 
   await prisma.organization.create({
