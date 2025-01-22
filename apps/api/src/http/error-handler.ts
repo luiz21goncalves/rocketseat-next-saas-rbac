@@ -15,6 +15,8 @@ type FastifyErrorHandler = FastifyInstance['errorHandler']
 
 export const errorHandler: FastifyErrorHandler = (error, request, reply) => {
   if (hasZodFastifySchemaValidationErrors(error)) {
+    console.error(error)
+
     return reply
       .status(400)
       .send({
@@ -28,22 +30,32 @@ export const errorHandler: FastifyErrorHandler = (error, request, reply) => {
   }
 
   if (error instanceof ConflictError) {
+    console.error(error)
+
     return reply.code(error.statusCode).send(error.toJSON())
   }
 
   if (error instanceof InvalidCredentialsError) {
+    console.error(error)
+
     return reply.code(error.statusCode).send(error.toJSON())
   }
 
   if (error instanceof NotFoundError) {
+    console.error(error)
+
     return reply.code(error.statusCode).send(error.toJSON())
   }
 
   if (error instanceof ValidationError) {
+    console.error(error)
+
     return reply.code(error.statusCode).send(error.toJSON())
   }
 
   const internalServerError = new InternalServerError({ cause: error })
+
+  console.error(internalServerError)
 
   return reply
     .code(internalServerError.statusCode)
