@@ -6,6 +6,8 @@ import { z } from 'zod'
 
 import { prisma } from '@/lib/prisma'
 
+import { InvalidCredentialsError } from '../errors/invalid-credentials-error'
+
 export async function authenticationWithPassword(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().post(
     '/sessions/password',
@@ -21,9 +23,6 @@ export async function authenticationWithPassword(app: FastifyInstance) {
           [StatusCodes.CREATED]: z
             .object({ token: z.string() })
             .describe('Login Succeeded'),
-          [StatusCodes.BAD_REQUEST]: z
-            .object({ message: z.string() })
-            .describe('Wrong credentials'),
         },
       },
     },
@@ -33,15 +32,13 @@ export async function authenticationWithPassword(app: FastifyInstance) {
       const userFromEmail = await prisma.user.findUnique({ where: { email } })
 
       if (!userFromEmail) {
-        return replay
-          .status(StatusCodes.BAD_REQUEST)
-          .send({ message: 'Invalid credentials.' })
+        throw new InvalidCredentialsError({ cause: 'User not found.' })
       }
 
       if (!userFromEmail.passwordHash) {
-        return replay
-          .status(StatusCodes.BAD_REQUEST)
-          .send({ message: 'Invalid credentials.' })
+        throw new InvalidCredentialsError({
+          cause: 'User does not have password.'
+        })
       }
 
       const isPasswordValid = await compare(
@@ -50,9 +47,7 @@ export async function authenticationWithPassword(app: FastifyInstance) {
       )
 
       if (!isPasswordValid) {
-        return replay
-          .status(StatusCodes.BAD_REQUEST)
-          .send({ message: 'Invalid credentials.' })
+        throw new InvalidCredentialsError({ cause: 'Invalid password' })
       }
 
       const token = await replay.jwtSign(

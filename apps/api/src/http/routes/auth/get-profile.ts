@@ -5,6 +5,8 @@ import { z } from 'zod'
 
 import { prisma } from '@/lib/prisma'
 
+import { NotFoundError } from '../errors/not-found-error'
+
 export async function getProfile(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().get(
     '/profile',
@@ -41,7 +43,10 @@ export async function getProfile(app: FastifyInstance) {
       })
 
       if (!user) {
-        throw new Error('User not found', { cause: sub })
+        throw new NotFoundError({
+          message: 'User not found',
+          cause: { id: sub }
+        })
       }
 
       return replay.status(StatusCodes.OK).send({ user })
